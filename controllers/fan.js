@@ -11,6 +11,20 @@ exports.fan_list = async function (req, res) {
     }
 };
 
+// VIEWS
+// Handle a show all view
+exports.fan_view_all_Page = async function (req, res) {
+    try {
+        thefan = await fan.find();
+        res.render('fan', { title: 'fan Search Results', results: thefan });
+    }
+    catch (err) {
+        res.send(`{"error": ${err}}`)
+        res.status(500);
+    }
+};
+
+
 // for a specific fan.
 exports.fan_detail = function(req, res) {
  res.send('NOT IMPLEMENTED: fan detail: ' + req.params.id);
