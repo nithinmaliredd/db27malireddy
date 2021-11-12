@@ -65,7 +65,7 @@ exports.fan_delete = function(req, res) {
 };
 
 
-/ Handle fan update form on PUT. 
+//Handle fan update form on PUT. 
 exports.fan_update_put = async function(req, res) { 
     console.log(`update on id ${req.params.id} with body 
 ${JSON.stringify(req.body)}`) 
