@@ -60,20 +60,30 @@ exports.fan_create_post = async function (req, res) {
     }
 };
 // Handle fan delete form on DELETE.
-// Handle fan delete on DELETE. 
-exports.fan_delete = async function(req, res) { 
-    console.log("delete "  + req.params.id) 
+exports.fan_delete = function(req, res) {
+ res.send('NOT IMPLEMENTED: fan delete DELETE ' + req.params.id);
+};
+
+
+/ Handle fan update form on PUT. 
+exports.fan_update_put = async function(req, res) { 
+    console.log(`update on id ${req.params.id} with body 
+${JSON.stringify(req.body)}`) 
     try { 
-        result = await fan.findByIdAndDelete( req.params.id) 
-        console.log("Removed " + result) 
+        let toUpdate = await fan.findById( req.params.id) 
+        // Do updates of properties 
+        if(req.body.fan_type)  
+               toUpdate.fan_type = req.body.fan_type; 
+        if(req.body.cost) toUpdate.cost = req.body.cost; 
+        if(req.body.size) toUpdate.size = req.body.size; 
+        let result = await toUpdate.save(); 
+        console.log("Sucess " + result) 
         res.send(result) 
     } catch (err) { 
         res.status(500) 
-        res.send(`{"error": Error deleting ${err}}`); 
+        res.send(`{"error": ${err}: Update for id ${req.params.id} 
+failed`); 
     } 
 }; 
-// Handle fan update form on PUT.
-exports.fan_update_put = function(req, res) {
- res.send('NOT IMPLEMENTED: fan update PUT' + req.params.id);
-};
+
 
