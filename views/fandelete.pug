@@ -7,22 +7,30 @@ block content
   - let type = toShow.brand 
   - let material = toShow.material 
   - let cost = toShow.cost 
-  div(class="card card-body" style="width: 30rem; background-color:#a47575;") 
+  div(class="card card-body delete_div") 
     div(class="row p-3 mb-2 text-white") 
-      div(class=' mr-3 col-sm-6') fan ID: 
-      div(class=' mr-3 col-sm-6' id="id" data=id) #{id} 
+      div(class=' mr-3 col-sm-6 fanlink') fan ID: 
+      div(class=' mr-3 col-sm-6 fanink' id="id" data=id) #{id} 
     div(class="row p-3 mb-2 text-white") 
-      div(class=' mr-3 col-sm-6') fan Brand: 
-      div(class=' mr-3 col-sm-6') #{type} 
+      div(class=' mr-3 col-sm-6 fanlink') fan Brand: 
+      div(class=' mr-3 col-sm-6 fanink') #{type} 
     div(class="row p-3 mb-2 text-white") 
-      div(class=' mr-3  col-sm-6') fan Material : 
-      div(class=' mr-3 col-sm-6')  #{material} 
+      div(class=' mr-3  col-sm-6 fanlink') fan Material : 
+      div(class=' mr-3 col-sm-6 fanink')  #{material} 
     div(class="row p-3 mb-2 text-white") 
-      div(class=' mr-3 col-sm-6') fan Cost: 
-      div(class=' mr-3 col-sm-6') $#{cost}
+      div(class=' mr-3 col-sm-6 fanlink') fan Cost: 
+      div(class=' mr-3 col-sm-6 fanink') $#{cost}
     div(class="d-flex flex-row justify-content-evenly")
       input(class="btn btn-danger " type="submit" value="Delete" id="delete")      
       a(href='/fan' class="btn btn-secondary") Cancel
+
+       script.
+ function cancel() {
+ // Go back to the home page for the costume collection
+ window.location.href='/costumes'
+ }
+
+ 
   script. 
     document.getElementById('delete').addEventListener('click', (event) => { 
 

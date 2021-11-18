@@ -6,3 +6,28 @@ body {
 a {
   color: #00B7FF;
 }
+.fanink { 
+background-color: grey;
+padding: 20px;
+}
+.fanlink {
+
+  margin: 20px 0;
+  text-transform: uppercase;
+  font-weight: bold;
+
+
+}
+.style{
+  color:greenyellow !important;
+  background-color: blue !important;
+  color: blanchedalmond
+}
+
+.delete_div{
+  background-color: goldenrod;
+  display: block;
+  margin:0 auto;
+  text-align: center;
+  width: 50%;
+}
