@@ -6,7 +6,7 @@ body {
 a {
   color: #00B7FF;
 }
-.fanink { 
+ .fanink { 
 background-color: grey;
 padding: 20px;
 }
@@ -30,4 +30,4 @@ padding: 20px;
   margin:0 auto;
   text-align: center;
   width: 50%;
-}
+} 
