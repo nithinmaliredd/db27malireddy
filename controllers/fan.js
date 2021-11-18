@@ -60,9 +60,17 @@ exports.fan_create_post = async function (req, res) {
     }
 };
 // Handle fan delete form on DELETE.
-exports.fan_delete = function(req, res) {
- res.send('NOT IMPLEMENTED: fan delete DELETE ' + req.params.id);
-};
+exports.fan_delete = async function(req, res) {
+    console.log("delete " + req.params.id)
+    try {
+    result = await fan.findByIdAndDelete( req.params.id)
+    console.log("Removed " + result)
+    res.send(result)
+    } catch (err) {
+    res.status(500)
+    res.send(`{"error": Error deleting ${err}}`);
+    }
+   };
 
 
 //Handle fan update form on PUT. 
@@ -86,5 +94,75 @@ ${JSON.stringify(req.body)}`)
 failed`); 
     } 
 }; 
+// Handle fan delete on DELETE.
+exports.fan_delete = async function(req, res) {
+    console.log("delete " + req.params.id)
+    try {
+    result = await fan.findByIdAndDelete( req.params.id)
+    console.log("Removed " + result)
+    res.send(result)
+    } catch (err) {
+    res.status(500)
+    res.send(`{"error": Error deleting ${err}}`);
+    }
+   };
 
+
+
+   exports.fan_view_one_Page = async function (req, res) {
+    console.log("single view for id " + req.query.id)
+    try {
+        result = await fan.findById(req.query.id)
+        res.render('fandetail',
+            { title: 'fan Detail', toShow: result });
+    }
+    catch (err) {
+        res.status(500)
+        res.send(`{'error': '${err}'}`);
+    }
+};
+
+// Handle building the view for creating a costume. 
+// No body, no in path parameter, no query. 
+// Does not need to be async 
+exports.fan_create_Page = function (req, res) {
+    console.log("create view")
+    try {
+        res.render('fancreate', { title: 'fan Create' });
+    }
+    catch (err) {
+        res.status(500)
+        res.send(`{'error': '${err}'}`);
+    }
+}
+
+// Handle building the view for updating a costume. 
+// query provides the id 
+exports.fan_update_Page = async function (req, res) {
+    console.log("update view for item " + req.query.id)
+    try {
+        let result = await fan.findById(req.query.id)
+        res.render('fanupdate', { title: 'fan Update', toShow: result });
+    }
+    catch (err) {
+        res.status(500)
+        res.send(`{'error': '${err}'}`);
+    }
+};
+
+// Handle a delete one view with id from query 
+exports.fan_delete_Page = async function (req, res) {
+    console.log("Delete view for id " + req.query.id)
+    try {
+        result = await fan.findById(req.query.id)
+        res.render('fandelete', {
+            title: 'fan Delete', toShow:
+                result
+        });
+    }
+    catch (err) {
+        res.status(500)
+        res.send(`{'error': '${err}'}`);
+    }
+};
 
