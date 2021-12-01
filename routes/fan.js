@@ -18,11 +18,11 @@ router.get('/', fan_controlers.fan_view_all_Page);
  router.get('/detail', fan_controlers.fan_view_one_Page);
 
 /* GET create costume page */
-router.get('/create', fan_controlers.fan_create_Page);
+router.get('/create', secured, fan_controlers.fan_create_Page);
 
 
 router.get('/update', secured, fan_controlers.fan_update_Page); 
 
-router.get('/delete', fan_controlers.fan_delete_Page); 
+router.get('/delete', secured, fan_controlers.fan_delete_Page); 
 
 module.exports = router;

@@ -1,26 +1,22 @@
-extends layout 
- 
-block content 
-  h1= title 
- if (toShow == null)
- h2 No instance to delete
- else
-  - let id = toShow._id 
-  - let brand = toShow.brand 
-  - let material = toShow.material 
-  - let cost = toShow.cost 
-  div(class="card card-body" style="width: 30rem; background-color:#a47575;") 
-    div(class="row p-3 mb-2  text-white") 
-      div(class=' mr-3 col-sm-6') fan ID: 
-      div(class=' mr-3 col-sm-6') #{id} 
-    div(class="row p-3 mb-2  text-white") 
-      div(class=' mr-3 col-sm-6') fan Brand: 
-      div(class=' mr-3 col-sm-6') #{brand} 
-    div(class="row p-3 mb-2  text-white") 
-      div(class=' mr-3  col-sm-6') fan Material  : 
-      div(class=' mr-3 col-sm-6')  #{material} 
-    div(class="row p-3 mb-2  text-white") 
-      div(class=' mr-3 col-sm-6') fan Cost: 
-      div(class=' mr-3 col-sm-6') $#{cost}
-    div(class="d-flex flex-row justify-content-center")      
-            a(href='/fan' class="btn") Go To fans
+extends layout
+block content
+    h1= title
+    if (toShow == null)
+        h2 No instance to delete
+    - let mattressid = toShow._id
+    - let mattressbrand = toShow.brand
+    - let mattressmaterial = toShow.material
+    - let mattresscost = toShow.cost
+    div(class="card card-body" style="width: 30rem; background-color:#a47575;")
+        div(class="row p-3 mb-2  text-white")
+            div(class=' mr-3 col-sm-6') mattress ID is:
+            div(class=' mr-3 col-sm-6') #{mattressid}
+        div(class="row p-3 mb-2  text-white")
+            div(class=' mr-3 col-sm-6') mattress brand is:
+            div(class=' mr-3 col-sm-6') #{mattressbrand}
+        div(class="row p-3 mb-2  text-white")
+            div(class=' mr-3 col-sm-6') mattress material is:
+            div(class=' mr-3 col-sm-6') #{mattressmaterial}
+        div(class="row p-3 mb-2  text-white")
+            div(class=' mr-3 col-sm-6') mattress cost is:
+            div(class=' mr-3 col-sm-6') #{mattresscost}

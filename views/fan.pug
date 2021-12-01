@@ -1,6 +1,8 @@
 extends layout
 
 block content
+  - let create = `dispatch(\"fan/create\")`
+  button.btn(class="btn-primary m1-1", onclick=create) Create
   h1= title
   p Welcome to the fan pug
   div(class="container-fluid")
@@ -12,9 +14,12 @@ block content
     div(class="row  m-1") 
       each item in fan 
        - let destination = `dispatch(\"/fan/update?id=${item._id}\")` 
+       - let detail=`dispatch(\"/fan/detail?id=${item._id}\")`
+       - let de=`dispatch(\"/fan/delete?id=${item._id}\")`
         div(class="row-sm-2", class="m-1") fan #{item.brand}(#{item.material}) is #{item.cost}
             button.btn( class="btn-primary ml-1", onclick= destination) Update
-            
+            button.btn( class="btn-secondary ml-2", onclick=detail ) Get Detail page
+            button.btn( class="btn-warning ml-2", onclick=de ) Delete
         script.                
             function buy(itemNo)
             {
@@ -24,4 +29,4 @@ block content
           function dispatch(path)
           { 
               window.location.href=path 
-          }
+          } 

@@ -59,6 +59,7 @@ exports.fan_create_post = async function (req, res) {
         res.send(`{"error": ${err}}`);
     }
 };
+
 // Handle fan delete form on DELETE.
 exports.fan_delete = async function(req, res) {
     console.log("delete " + req.params.id)
@@ -81,10 +82,10 @@ ${JSON.stringify(req.body)}`)
     try { 
         let toUpdate = await fan.findById( req.params.id) 
         // Do updates of properties 
-        if(req.body.fan_type)  
-               toUpdate.fan_type = req.body.fan_type; 
-        if(req.body.cost) toUpdate.cost = req.body.cost; 
-        if(req.body.size) toUpdate.size = req.body.size; 
+        if(req.body.brand)  
+               toUpdate.brand = req.body.brand; 
+        if(req.body.cost) toUpdate.material = req.body.material; 
+        if(req.body.size) toUpdate.cost = req.body.cost; 
         let result = await toUpdate.save(); 
         console.log("Sucess " + result) 
         res.send(result) 
@@ -94,6 +95,7 @@ ${JSON.stringify(req.body)}`)
 failed`); 
     } 
 }; 
+
 // Handle fan delete on DELETE.
 exports.fan_delete = async function(req, res) {
     console.log("delete " + req.params.id)
@@ -109,7 +111,7 @@ exports.fan_delete = async function(req, res) {
 
 
 
-   exports.fan_view_one_Page = async function (req, res) {
+exports.fan_view_one_Page = async function (req, res) {
     console.log("single view for id " + req.query.id)
     try {
         result = await fan.findById(req.query.id)
